@@ -1,7 +1,21 @@
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
 #itemDiscription {
-    width: 30%;
+    width: 90%;
     font-size: 16px;
     padding: 12px 20px 12px 40px;
     border: 1px solid #ddd;
     margin-bottom: 12px;
+}
+
+.items {
+    max-width: 10%;
+    height: auto;
 }
