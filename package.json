@@ -19,5 +19,9 @@
   "homepage": "https://github.com/gvtrindade/fakeplatinumgod#readme",
   "devDependencies": {
     "electron": "8.1.1"
+  },
+  "dependencies": {
+    "d3": "^5.15.0",
+    "d3-fetch": "^1.1.2"
   }
 }

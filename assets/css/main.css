@@ -1,21 +1,36 @@
 .navbar {
-    overflow: hidden;
-    background-color: #333;
     position: fixed;
+    overflow: hidden;
+    background-color: #bbb;
     top: 0;
     left: 0;
     width: 100%;
 }
 
 #itemDiscription {
-    width: 90%;
+    width: 50%;
     font-size: 16px;
-    padding: 12px 20px 12px 40px;
-    border: 1px solid #ddd;
-    margin-bottom: 12px;
+    border: 1px solid #fff;
 }
 
 .items {
-    max-width: 10%;
+    position: sticky;
+    bottom: 0;
+    box-sizing: border-box;
+    overflow-y: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-app-region: no-drag;
+}
+
+.itemImage {
+    user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    display: inline-block;
+    width: 20%;
     height: auto;
 }

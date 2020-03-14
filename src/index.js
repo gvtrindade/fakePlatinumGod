@@ -1,9 +1,14 @@
-let item01 = document.getElementById("item01")
+const d3 = require("d3");
+let i;
+const items = document.getElementById("items")
 
-item01.onmouseover = function() {
-    document.getElementById("item01Desc").style.display = "block";
-}
+d3.csv("../assets/items.csv").then(function(data) {
 
-item01.onmouseout = function() {
-    document.getElementById("item01Desc").style.display = "none";
-}
+    for (i = 0; i < 10; i++) {
+        let itemImage = document.createElement("IMG")
+        itemImage.src = data[i].Image
+        itemImage.classList.add("itemImage")
+        items.appendChild(itemImage);
+    }
+
+})
