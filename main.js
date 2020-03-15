@@ -7,19 +7,19 @@ function createWindow() {
     win = new BrowserWindow({
         width: 372, //372
         height: 125, //125
-        alwaysOnTop: true,
-        frame: false,
+        //alwaysOnTop: true,
+        //frame: false,
         webPreferences: {
             nodeIntegration: true
         },
-        transparent: true
+        //transparent: true
     })
 
     // and load the index.html of the app.
     win.loadFile('src/index.html')
 
     // Open the DevTools.
-    //win.webContents.openDevTools()
+    win.webContents.openDevTools()
 
     //Remove menu bar 
     win.removeMenu();
@@ -56,8 +56,7 @@ app.on("ready", function() {
         menu: actions => [{
                 label: 'About',
                 click: function() {
-                    const modalPath = path.join('file://', __dirname + '/src', 'add.html')
-                    console.log(modalPath)
+                    const modalPath = path.join('file://', __dirname + '/src', 'about.html')
                     win = new BrowserWindow({ height: 400, width: 400 })
                     win.on('close', function() { win = null })
                     win.loadURL(modalPath)

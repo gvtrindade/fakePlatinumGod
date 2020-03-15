@@ -1,6 +1,7 @@
 const d3 = require("d3");
 const shell = require("electron").shell;
 const items = document.getElementById("items");
+const remote = require("electron").remote
 
 //Sort lines in items.csv and creates one element for each item
 d3.csv("../assets/items.csv").then(function(data) {
@@ -73,3 +74,14 @@ function filter() {
         }
     };
 };
+
+//Close and minimize functions
+function close() {
+    let window = remote.getCurrentWindow();
+    window.close();
+}
+
+function minimize() {
+    let window = remote.getCurrentWindow();
+    window.minimize();
+}
