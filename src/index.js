@@ -1,86 +1,75 @@
 const d3 = require("d3");
-const electron = require("electron");
-let i;
+const shell = require("electron").shell;
 const items = document.getElementById("items");
-let externalData;
-const BrowserWindow = electron.remote.BrowserWindow;
-let win = new BrowserWindow({ frame: false, alwaysontop: true, width: 100, height: 50 })
 
 //Sort lines in items.csv and creates one element for each item
 d3.csv("../assets/items.csv").then(function(data) {
 
-    for (i = 0; i < 10; i++) {
+    for (let i = 0; i < 10; i++) {
 
-        externalData = data
-        let itemImage = document.createElement("IMG")
+        //Creates individual div for the item
+        let itemDiv = document.createElement("div");
+        itemDiv.id = data[i].ID;
+        itemDiv.classList.add("itemDiv")
+        items.appendChild(itemDiv);
+
+        //Creates image for the item, with id and click event to open link on browser
+        let itemImage = document.createElement("img")
         itemImage.src = data[i].Image
         itemImage.classList.add("itemImage")
         itemImage.id = data[i].ID
-        items.appendChild(itemImage);
-
-
-
-        itemImage.addEventListener("mouseover", function(e) {
-                var targ, targID;
-                if (!e) var e = window.event;
-                if (e.target) targ = e.target;
-                else if (e.srcElement) targ = e.srcElement;
-                targID = targ.id - 1;
-
-                let x = e.clientX;
-                let y = e.clientY;
-
-                win.setPosition(x, y);
-                win.show();
-            }
-
-        );
-
-        items.addEventListener("mouseout", function() {
-
-            win.hide();
-
+        itemImage.addEventListener("click", function() {
+            shell.openExternal(data[i].Link)
         })
-    };
+        itemDiv.appendChild(itemImage);
 
+        //Creates li with the information about the item
+        let itemInfo = document.createElement("li");
+        itemInfo.classList.add("itemInfo");
+        itemDiv.appendChild(itemInfo);
+        let nameObj = { variable: "itemName", ref: data[i].Name };
+        let subnameObj = { variable: "itemSubname", ref: data[i].Subname };
+        let descObj = { variable: "itemDescription", ref: data[i].Description };
+        let refArray = [nameObj, subnameObj, descObj];
+
+        for (let obj in refArray) {
+
+            let variable = refArray[obj].variable
+            let reference = refArray[obj].ref
+
+            variable = document.createElement("span");
+            variable.classList.add(refArray[obj].variable);
+            variable.innerText = reference;
+            itemInfo.appendChild(variable);
+
+        };
+    };
 });
 
 
-//Create box when mouse hovers over the item
-
-/*items.addEventListener("mouseover", function(e) {
-
-    
-    let e = window.event;
-    let x = e.clientX;
-    let y = e.clientY;
-
-    item1.style.top = y + "px";
-    item1.style.left = x + "px";
-    item1.style.transition = "2s";
-    
-})*/
-
-/*
-items.addEventListener("mouseout", function() {
-
-    item1.style.top = "15px";
-    item1.style.left = "15px";
-
-})
-*/
-
 //Filter function
-
 function filter() {
 
-    let input, items, itemImage, j, a, txtValue;
+    //Declare variables
+    let input, filter, items, itemInfo, itemDiv, j, k, span, txtValue;
     input = document.getElementById("itemDescription");
+    filter = input.value.toUpperCase();
     items = document.getElementById("items");
-    itemImage = items.getElementsByClassName("itemsImage")
+    itemInfo = items.getElementsByClassName("itemInfo")
+    itemDiv = document.getElementsByClassName("itemDiv")
 
-    //Loop through items and hide those who don't match
-    for (j = 0; j < items.lenght; j++) {
-        console.log(externalData[j].Name)
-    }
-}
+    //Loop through all items and hide those who don't match the search
+    for (j = 0; j < itemInfo.length; j++) {
+
+        for (k = 0; k < 3; k++) {
+            span = itemInfo[j].getElementsByTagName("span")[k];
+            txtValue = span.textContent || span.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                itemDiv[j].style.display = "";
+                break
+            } else {
+                itemDiv[j].style.display = "none";
+            };
+        }
+    };
+};

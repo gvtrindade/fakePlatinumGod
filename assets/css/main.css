@@ -1,36 +1,64 @@
-.navbar {
-    position: fixed;
-    overflow: hidden;
-    background-color: #bbb;
-    top: 0;
-    left: 0;
-    width: 100%;
-}
-
-#itemDiscription {
-    width: 50%;
-    font-size: 16px;
-    border: 1px solid #fff;
-}
-
-.items {
-    position: sticky;
-    bottom: 0;
-    box-sizing: border-box;
-    overflow-y: hidden;
-    overflow-x: auto;
-    white-space: nowrap;
-    -webkit-app-region: no-drag;
-}
-
-.itemImage {
-    user-drag: none;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-drag: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    display: inline-block;
-    width: 20%;
-    height: auto;
-}
+    body {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    
+    .navbar {
+        /*Search bar*/
+        position: fixed;
+        overflow: hidden;
+        background-color: #bbb;
+        top: 0;
+        left: 0;
+        width: 100%;
+        -webkit-app-region: drag
+    }
+    
+    .items {
+        /*Div that has all the items*/
+        box-sizing: border-box;
+        overflow-y: hidden;
+        overflow-x: auto;
+        white-space: nowrap;
+        /*Remove default list styling*/
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .itemDiv {
+        /*Div that has individual items*/
+        position: relative;
+        display: inline-block;
+        width: "20px";
+        height: auto;
+        user-select: none;
+    }
+    
+    .itemImage {
+        /*Img of the item*/
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+    
+    .itemDiv .itemInfo {
+        /*Tooltip that show item information*/
+        visibility: hidden;
+        width: "120px";
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 6px;
+        /*Fade in*/
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    
+    .itemDiv:hover .itemInfo {
+        /*Complement of the tooltip*/
+        visibility: visible;
+        opacity: 1;
+    }
