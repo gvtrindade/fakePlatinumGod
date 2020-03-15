@@ -3,10 +3,10 @@ const { app, BrowserWindow } = require('electron')
 function createWindow() {
     // Create the browser window.
     const win = new BrowserWindow({
-        width: 372,
-        height: 125,
-        alwaysOnTop: true,
-        frame: false,
+        width: 800, //372
+        height: 600, //125
+        //alwaysOnTop: true,
+        //frame: false,
         webPreferences: {
             nodeIntegration: true
         }
@@ -16,7 +16,7 @@ function createWindow() {
     win.loadFile('src/index.html')
 
     // Open the DevTools.
-    //win.webContents.openDevTools()
+    win.webContents.openDevTools()
 
     win.removeMenu();
 }
