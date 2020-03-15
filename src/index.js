@@ -5,7 +5,7 @@ const items = document.getElementById("items");
 //Sort lines in items.csv and creates one element for each item
 d3.csv("../assets/items.csv").then(function(data) {
 
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < data.length; i++) {
 
         //Creates individual div for the item
         let itemDiv = document.createElement("div");

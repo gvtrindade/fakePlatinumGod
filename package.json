@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "d3": "^5.15.0",
-    "d3-fetch": "^1.1.2"
+    "d3-fetch": "^1.1.2",
+    "electron-context-menu": "^0.16.0"
   }
 }

@@ -1,8 +1,10 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow } = require('electron');
+const path = require('path')
+const contextMenu = require('electron-context-menu');
 
 function createWindow() {
     // Create the browser window.
-    const win = new BrowserWindow({
+    win = new BrowserWindow({
         width: 372, //372
         height: 125, //125
         alwaysOnTop: true,
@@ -10,7 +12,7 @@ function createWindow() {
         webPreferences: {
             nodeIntegration: true
         },
-
+        transparent: true
     })
 
     // and load the index.html of the app.
@@ -19,7 +21,9 @@ function createWindow() {
     // Open the DevTools.
     //win.webContents.openDevTools()
 
+    //Remove menu bar 
     win.removeMenu();
+
 }
 
 // This method will be called when Electron has finished
@@ -42,4 +46,31 @@ app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
         createWindow()
     }
+
+})
+
+app.on("ready", function() {
+
+    //Creates a context menu with About and Exit options
+    contextMenu({
+        menu: actions => [{
+                label: 'About',
+                click: function() {
+                    const modalPath = path.join('file://', __dirname + '/src', 'add.html')
+                    console.log(modalPath)
+                    win = new BrowserWindow({ height: 400, width: 400 })
+                    win.on('close', function() { win = null })
+                    win.loadURL(modalPath)
+                    win.removeMenu()
+                    win.show()
+                }
+            },
+            {
+                label: 'Exit',
+                click: function() { app.quit() }
+            },
+            actions.inspect({ visible: false })
+        ]
+    })
+
 })
