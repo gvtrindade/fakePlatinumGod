@@ -11,21 +11,30 @@
 <body>
 
     <div class="navbar">
-        <input type="text" id="itemDescription" onkeyup="filter()" placeholder="Item">
 
-        <div id="closeButton">
-            <img class="frameButton" src="../assets/images/close.png" style="height: 10px;">
+        <input type="text" id="searchBar" onkeyup="filter()" placeholder="Search">
+
+        <div id="minimizeButton" class="frameButton" onclick="minimize()">
+            <img src="../assets/images/minimize.png" style="height: 2px; width: 8px;">
         </div>
 
-        <div id="minimizeButton" onclick="minimize()">
-            <img class="frameButton" src="../assets/images/minimize.png" style="height: 2px; width: 8px;">
+        <div id="closeButton" class="frameButton">
+            <img src="../assets/images/close.png" style="height: 10px;">
         </div>
 
     </div>
 
+    <div id="content">
+        <div class="items" id="items"></div>
+    </div>
 
+    <div class="arrowButton" id="rightDiv" onclick="scrollToRight()">
+        <img src="../assets/images/arrow.png" id="rightButton">
+    </div>
+    <div class="arrowButton" id="leftDiv" onclick="scrollToLeft()">
+        <img src="../assets/images/arrow.png" id="leftButton">
+    </div>
 
-    <div class="items" id="items"></div>
 
     <!--<p>Welcome to fakeplatinumgod!</p>-->
 

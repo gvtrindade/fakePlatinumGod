@@ -3,6 +3,7 @@ const shell = require("electron").shell;
 const items = document.getElementById("items");
 const remote = require("electron").remote
 
+
 //Sort lines in items.csv and creates one element for each item
 d3.csv("../assets/items.csv").then(function(data) {
 
@@ -30,7 +31,7 @@ d3.csv("../assets/items.csv").then(function(data) {
         itemDiv.appendChild(itemInfo);
         let nameObj = { variable: "itemName", ref: data[i].Name };
         let subnameObj = { variable: "itemSubname", ref: data[i].Subname };
-        let descObj = { variable: "itemDescription", ref: data[i].Description };
+        let descObj = { variable: "searchBar", ref: data[i].Description };
         let refArray = [nameObj, subnameObj, descObj];
 
         for (let obj in refArray) {
@@ -53,7 +54,7 @@ function filter() {
 
     //Declare variables
     let input, filter, items, itemInfo, itemDiv, j, k, span, txtValue;
-    input = document.getElementById("itemDescription");
+    input = document.getElementById("searchBar");
     filter = input.value.toUpperCase();
     items = document.getElementById("items");
     itemInfo = items.getElementsByClassName("itemInfo")
@@ -76,14 +77,24 @@ function filter() {
 };
 
 //Close and minimize functions
-let closebutton = document.getElementById("closeButton")
+const win = remote.getCurrentWindow();
+const closebutton = document.getElementById("closeButton")
 
 closebutton.addEventListener("click", function() {
-    let window = remote.getCurrentWindow();
-    window.close();
+    win.close();
 });
 
 function minimize() {
-    let window = remote.getCurrentWindow();
-    window.minimize();
+    win.minimize();
+}
+
+//Roll window by clicking buttons
+const element = document.getElementById("content")
+
+function scrollToRight() {
+    element.scrollBy({ left: 240, behavior: "smooth" });
+}
+
+function scrollToLeft() {
+    element.scrollBy({ left: -240, behavior: "smooth" });
 }

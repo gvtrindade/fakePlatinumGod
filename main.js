@@ -8,18 +8,18 @@ function createWindow() {
         width: 372, //372
         height: 125, //125
         //alwaysOnTop: true,
-        //frame: false,
+        frame: false,
         webPreferences: {
             nodeIntegration: true
         },
-        //transparent: true
+        transparent: true
     })
 
     // and load the index.html of the app.
     win.loadFile('src/index.html')
 
     // Open the DevTools.
-    //win.webContents.openDevTools()
+    // win.webContents.openDevTools()
 
     //Remove menu bar 
     win.removeMenu();

@@ -1,42 +1,92 @@
     body {
-        background-color: rgba(0, 0, 0, 0.5);
+        /* Body of the program */
+        width: 372px;
+        height: 125px;
+        display: grid;
+        grid-template-rows: 31px auto;
+        margin: 0;
+        padding: 0;
     }
+    /*Menu bar*/
     
     .navbar {
-        /*Search bar*/
-        position: fixed;
+        /*Menu bar*/
+        height: 31px;
+        width: 372px;
         overflow: hidden;
-        background-color: #bbb;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: "31px";
-        /*-webkit-app-region: drag*/
+        display: grid;
+        grid-template-columns: 50% 31px 31px;
+        background-color: #929292;
+        -webkit-app-region: drag/*Make it draggable*/
+    }
+    
+    #searchBar {
+        /* Search bar */
+        -webkit-app-region: no-drag/*Make it not draggable*/
     }
     
     .frameButton {
-        align-content: right;
+        /* Class of the close and minimize buttons */
+        position: absolute;
+        height: 31px;
+        width: 31px;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        -webkit-app-region: no-drag;
+    }
+    
+    #minimizeButton {
+        top: 0;
+        right: 31px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    #minimizeButton:hover {
+        background-color: #a9a8a8;
+    }
+    
+    #closeButton {
+        top: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    #closeButton:hover {
+        background-color: red;
+    }
+    /*Content of the program*/
+    
+    #content {
+        background-color: rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        display: grid;
+        position: relative;
+        left: 31px;
+        width: 310px;
     }
     
     .items {
         /*Div that has all the items*/
         box-sizing: border-box;
-        overflow-y: hidden;
-        overflow-x: auto;
         white-space: nowrap;
-        /*Remove default list styling*/
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
     .itemDiv {
         /*Div that has individual items*/
-        position: relative;
         display: inline-block;
-        width: "20px";
-        height: auto;
         user-select: none;
+        height: 80px;
+        width: 80px;
     }
     
     .itemImage {
@@ -46,6 +96,16 @@
         -webkit-user-drag: none;
         -webkit-user-select: none;
         -ms-user-select: none;
+        width: 78px;
+        height: 94px;
+    }
+    
+    .itemImage:hover {
+        cursor: pointer;
+    }
+    
+    .itemInfo {
+        position: absolute;
     }
     
     .itemDiv .itemInfo {
@@ -66,4 +126,50 @@
         /*Complement of the tooltip*/
         visibility: visible;
         opacity: 1;
+    }
+    
+    .arrowButton {
+        /* Class of arrow buttons */
+        height: 94px;
+        width: 31px;
+        position: absolute;
+        background-color: rgba(5, 5, 5, 0.5);
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .arrowButton:hover {
+        cursor: pointer;
+    }
+    
+    #rightDiv {
+        right: 0;
+    }
+    
+    #leftDiv {
+        left: 0;
+    }
+    
+    #leftButton {
+        height: 10px;
+        width: 30px;
+        rotate: 90deg;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+    
+    #rightButton {
+        height: 10px;
+        width: 30px;
+        rotate: -90deg;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
     }
