@@ -1,12 +1,13 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path')
 const contextMenu = require('electron-context-menu');
+const isDev = require("electron-is-dev")
 
 function createWindow() {
     // Create the browser window.
     win = new BrowserWindow({
-        width: 372, //372
-        height: 125, //125
+        width: 1000, //372
+        height: 200, //125
         //alwaysOnTop: true,
         frame: false,
         webPreferences: {
@@ -72,4 +73,5 @@ app.on("ready", function() {
         ]
     })
 
+    contextMenu.showInspectElement = false
 })

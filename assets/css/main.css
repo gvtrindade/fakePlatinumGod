@@ -1,21 +1,30 @@
     body {
         /* Body of the program */
-        width: 372px;
-        height: 125px;
+        width: 450px;
+        height: 150px;
         display: grid;
         grid-template-rows: 31px auto;
         margin: 0;
         padding: 0;
+    }
+    
+    #BG {
+        background-color: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        top: 31px;
+        height: 96px;
+        width: 446px;
+        z-index: -1;
     }
     /*Menu bar*/
     
     .navbar {
         /*Menu bar*/
         height: 31px;
-        width: 372px;
+        width: 446px;
         overflow: hidden;
         display: grid;
-        grid-template-columns: 50% 31px 31px;
+        grid-template-columns: 50% auto;
         background-color: #929292;
         -webkit-app-region: drag/*Make it draggable*/
     }
@@ -36,14 +45,13 @@
         -webkit-user-select: none;
         -ms-user-select: none;
         -webkit-app-region: no-drag;
-    }
-    
-    #minimizeButton {
-        top: 0;
-        right: 31px;
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+    
+    #minimizeButton {
+        left: 384px;
     }
     
     #minimizeButton:hover {
@@ -51,53 +59,49 @@
     }
     
     #closeButton {
-        top: 0;
-        right: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        left: 415px;
     }
     
     #closeButton:hover {
         background-color: red;
     }
-    /*Content of the program*/
     
     #content {
-        background-color: rgba(0, 0, 0, 0.5);
-        overflow: hidden;
+        /*Div with the content of the program*/
+        overflow-x: hidden;
+        overflow-y: visible;
         display: grid;
         position: relative;
         left: 31px;
-        width: 310px;
+        width: 384px;
+        height: 130px;
     }
     
     .items {
         /*Div that has all the items*/
         box-sizing: border-box;
         white-space: nowrap;
-        display: flex;
-        align-items: center;
-        justify-content: center;
     }
     
     .itemDiv {
         /*Div that has individual items*/
         display: inline-block;
         user-select: none;
-        height: 80px;
-        width: 80px;
+        height: 96px;
+        width: 96px;
+        align-items: center;
+        justify-content: center;
     }
     
     .itemImage {
-        /*Img of the item*/
+        /*Image of the item*/
         user-select: none;
         -moz-user-select: none;
         -webkit-user-drag: none;
         -webkit-user-select: none;
         -ms-user-select: none;
-        width: 78px;
-        height: 94px;
+        width: 96px;
+        height: 96px;
     }
     
     .itemImage:hover {
@@ -105,13 +109,15 @@
     }
     
     .itemInfo {
-        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
     .itemDiv .itemInfo {
         /*Tooltip that show item information*/
+        position: absolute;
         visibility: hidden;
-        width: "120px";
         background-color: #555;
         color: #fff;
         text-align: center;
@@ -120,6 +126,19 @@
         /*Fade in*/
         opacity: 0;
         transition: opacity 0.3s;
+    }
+    /* Tooltip arrow */
+    
+    .itemDiv .itemInfo::after {
+        transform: rotate(180deg);
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: 45px;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #555 transparent transparent transparent;
     }
     
     .itemDiv:hover .itemInfo {
@@ -132,8 +151,8 @@
         /* Class of arrow buttons */
         height: 94px;
         width: 31px;
+        top: 31px;
         position: absolute;
-        background-color: rgba(5, 5, 5, 0.5);
         bottom: 0;
         display: flex;
         align-items: center;
@@ -145,7 +164,7 @@
     }
     
     #rightDiv {
-        right: 0;
+        left: 415px;
     }
     
     #leftDiv {
@@ -153,9 +172,9 @@
     }
     
     #leftButton {
-        height: 10px;
+        height: 25px;
         width: 30px;
-        rotate: 90deg;
+        transform: rotate(90deg);
         user-select: none;
         -moz-user-select: none;
         -webkit-user-drag: none;
@@ -164,9 +183,9 @@
     }
     
     #rightButton {
-        height: 10px;
+        height: 25px;
         width: 30px;
-        rotate: -90deg;
+        transform: rotate(-90deg);
         user-select: none;
         -moz-user-select: none;
         -webkit-user-drag: none;
