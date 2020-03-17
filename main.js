@@ -13,12 +13,12 @@ function createWindow() {
     win = new BrowserWindow({
         width: 446, //446
         height: 240, //125
-        // alwaysOnTop: true,
+        alwaysOnTop: true,
         frame: false,
         webPreferences: {
             nodeIntegration: true
         },
-        // transparent: true
+        transparent: true
     })
 
     // and load the index.html of the app.
