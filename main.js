@@ -1,14 +1,13 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path')
 const contextMenu = require('electron-context-menu');
-const isDev = require("electron-is-dev")
 
 function createWindow() {
     // Create the browser window.
     win = new BrowserWindow({
-        width: 1000, //372
+        width: 446, //372
         height: 200, //125
-        //alwaysOnTop: true,
+        // alwaysOnTop: true,
         frame: false,
         webPreferences: {
             nodeIntegration: true
@@ -69,9 +68,6 @@ app.on("ready", function() {
                 label: 'Exit',
                 click: function() { app.quit() }
             },
-            actions.inspect({ visible: false })
         ]
     })
-
-    contextMenu.showInspectElement = false
 })
