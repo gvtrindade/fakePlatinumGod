@@ -11,14 +11,14 @@ require('electron-reload')(__dirname, {
 function createWindow() {
     // Create the browser window.
     win = new BrowserWindow({
-        width: 446, //372
-        height: 300, //125
+        width: 446, //446
+        height: 240, //125
         // alwaysOnTop: true,
         frame: false,
         webPreferences: {
             nodeIntegration: true
         },
-        transparent: true
+        // transparent: true
     })
 
     // and load the index.html of the app.
