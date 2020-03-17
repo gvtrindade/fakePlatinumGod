@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(236, 236, 236);
+    display: grid;
+    grid-template-rows: 31px 55% 25%;
+    overflow: hidden;
+}
+
+.navbar {
+    /*Menu bar*/
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: #929292;
+    /*Make it draggable*/
+    -webkit-app-region: drag
+}
+
+.frameButton {
+    /* Class of the close and minimize buttons */
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -webkit-app-region: no-drag;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#minimizeButton {
+    left: 85%;
+}
+
+#minimizeButton:hover {
+    background-color: #a9a8a8;
+}
+
+#closeButton {
+    right: 0;
+}
+
+#closeButton:hover {
+    background-color: red;
+}
+
+.programInfo {
+    /* Information about the program */
+    margin: 5px 0 0 0;
+    display: grid;
+    grid-template-columns: 25% auto;
+    justify-content: center;
+}
+
+#logo {
+    height: 100%;
+}
+
+.text {
+    margin: 0;
+    padding: 5px;
+}
+
+.links {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}

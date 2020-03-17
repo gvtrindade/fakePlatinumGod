@@ -26,7 +26,7 @@ d3.csv("../assets/items.csv").then(function(data) {
         itemDiv.appendChild(itemImage);
 
         //Creates li with the information about the item
-        let itemInfo = document.createElement("li");
+        let itemInfo = document.createElement("ul");
         itemInfo.classList.add("itemInfo");
         itemDiv.appendChild(itemInfo);
         let nameObj = { variable: "itemName", ref: data[i].Name };
@@ -38,6 +38,11 @@ d3.csv("../assets/items.csv").then(function(data) {
 
             let variable = refArray[obj].variable
             let reference = refArray[obj].ref
+
+            if (obj == 2) {
+                let hr = document.createElement("hr");
+                itemInfo.appendChild(hr)
+            };
 
             variable = document.createElement("span");
             variable.classList.add(refArray[obj].variable);
@@ -51,6 +56,9 @@ d3.csv("../assets/items.csv").then(function(data) {
 
 //Filter function
 function filter() {
+
+    //Scrolls to the start of the list
+    element.scrollTo(0, 0);
 
     //Declare variables
     let input, filter, items, itemInfo, itemDiv, j, k, span, txtValue;
