@@ -23,11 +23,16 @@ d3.csv("../assets/items.csv").then(function(data) {
         itemImage.addEventListener("click", function() {
             shell.openExternal(data[i].Link)
         })
+        itemImage.addEventListener("mouseover", function(this) {
+            console.log(document.getElementById(`${id}_Info`))
+
+        })
         itemDiv.appendChild(itemImage);
 
-        //Creates li with the information about the item
-        let itemInfo = document.createElement("ul");
+        //Creates div with the information about the item
+        let itemInfo = document.createElement("div");
         itemInfo.classList.add("itemInfo");
+        itemInfo.id = data[i].ID + "_Info"
         itemDiv.appendChild(itemInfo);
         let nameObj = { variable: "itemName", ref: data[i].Name };
         let subnameObj = { variable: "itemSubname", ref: data[i].Subname };
@@ -44,9 +49,9 @@ d3.csv("../assets/items.csv").then(function(data) {
                 itemInfo.appendChild(hr)
             };
 
-            variable = document.createElement("span");
+            variable = document.createElement("div");
             variable.classList.add(refArray[obj].variable);
-            variable.innerText = reference;
+            variable.id = reference;
             itemInfo.appendChild(variable);
 
         };

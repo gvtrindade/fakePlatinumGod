@@ -104,20 +104,16 @@
     .itemImage:hover {
         cursor: pointer;
     }
-    
-    .itemDiv .itemInfo {
-        /*Tooltip that show item information*/
+    /* .itemDiv .itemInfo {
         position: absolute;
         visibility: hidden;
         background-color: #555;
         color: #fff;
         padding: 5px 2%;
         border-radius: 6px;
-        /*Fade in*/
         opacity: 0;
         transition: opacity 0.3s;
     }
-    /* Tooltip arrow */
     
     .itemDiv .itemInfo::after {
         transform: rotate(180deg);
@@ -132,10 +128,9 @@
     }
     
     .itemDiv:hover .itemInfo {
-        /*Complement of the tooltip*/
         visibility: visible;
         opacity: 1;
-    }
+    } */
     
     span {
         /* Span with text */

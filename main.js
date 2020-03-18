@@ -13,19 +13,19 @@ function createWindow() {
     win = new BrowserWindow({
         width: 446, //446
         height: 240, //125
-        alwaysOnTop: true,
-        frame: false,
+        // alwaysOnTop: true,
+        // frame: false,
         webPreferences: {
             nodeIntegration: true
         },
-        transparent: true
+        // transparent: true
     })
 
     // and load the index.html of the app.
     win.loadFile('src/index.html')
 
     // Open the DevTools.
-    // win.webContents.openDevTools()
+    win.webContents.openDevTools()
 
     //Remove menu bar 
     win.removeMenu();
