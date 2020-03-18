@@ -5,12 +5,15 @@ A widget to search items of the game The Binding of Isaac Rebirth based on the e
 - Search items by name, subname or description
 - Transparent, so it won't block your vision of the game
 
+<h2>Download</h2>
+<a href="https://github.com/gvtrindade/fakePlatinumGod/releases">Download Page</a>
 
-Installation
-- Download the setup file;
-- Run it;
-- The setup will isntall the app on the ~/Appdata/Local/Programs/fakeplatinumgod and save a shortcut in the desktop and start menu areas.
-
+<h2>Installation</h2>
+<ul>
+  <li>Download the setup file;</li>
+  <li>Run it;</li>
+<li>The setup will isntall the app on the ~/Appdata/Local/Programs/fakeplatinumgod and save a shortcut in the desktop and start menu areas.</li>
+</ul>
 
 Functionalities
 - Search bar that can be used to search an item by its name, subname or description;
