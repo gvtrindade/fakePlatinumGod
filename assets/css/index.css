@@ -1,7 +1,7 @@
     body {
         /* Body of the program */
         width: 446px;
-        height: 240px;
+        height: 270px;
         margin: 0;
         padding: 0;
     }
@@ -14,7 +14,6 @@
         width: 446px;
         z-index: -1;
     }
-    /*Menu bar*/
     
     .navbar {
         /*Menu bar*/
@@ -80,6 +79,14 @@
         white-space: nowrap;
     }
     
+    .items:hover .itemImage {
+        filter: blur(5px);
+    }
+    
+    .items .itemImage:hover {
+        filter: blur(0);
+    }
+    
     .itemDiv {
         /*Div that has individual items*/
         display: inline-block;
@@ -104,50 +111,28 @@
     .itemImage:hover {
         cursor: pointer;
     }
-    /* .itemDiv .itemInfo {
+    
+    #descriptions {
         position: absolute;
-        visibility: hidden;
+        bottom: 0;
         background-color: #555;
         color: #fff;
+        margin: 3%;
         padding: 5px 2%;
         border-radius: 6px;
-        opacity: 0;
-        transition: opacity 0.3s;
+        width: 90%;
+        height: 40%;
     }
     
-    .itemDiv .itemInfo::after {
-        transform: rotate(180deg);
-        content: "";
-        position: absolute;
-        top: -10px;
-        left: 45px;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: #555 transparent transparent transparent;
-    }
-    
-    .itemDiv:hover .itemInfo {
-        visibility: visible;
-        opacity: 1;
-    } */
-    
-    span {
-        /* Span with text */
-        display: table;
-        padding: 1px 0;
-        font-family: Arial, Helvetica, sans-serif;
-    }
-    
-    .itemName {
+    #itemName {
         font-size: 20px;
     }
     
-    .itemSubname {
+    #itemSubname {
         font-size: 14px;
     }
     
-    .itemDescription {
+    #itemDescription {
         font-size: 16px;
     }
     

@@ -23,40 +23,70 @@ d3.csv("../assets/items.csv").then(function(data) {
         itemImage.addEventListener("click", function() {
             shell.openExternal(data[i].Link)
         })
-        itemImage.addEventListener("mouseover", function(this) {
-            console.log(document.getElementById(`${id}_Info`))
-
-        })
+        itemImage.onmouseover = showInfo;
+        itemImage.onmouseout = hideInfo;
         itemDiv.appendChild(itemImage);
 
         //Creates div with the information about the item
         let itemInfo = document.createElement("div");
         itemInfo.classList.add("itemInfo");
         itemInfo.id = data[i].ID + "_Info"
+        itemInfo.style = "display: none"
         itemDiv.appendChild(itemInfo);
         let nameObj = { variable: "itemName", ref: data[i].Name };
         let subnameObj = { variable: "itemSubname", ref: data[i].Subname };
         let descObj = { variable: "itemDescription", ref: data[i].Description };
         let refArray = [nameObj, subnameObj, descObj];
 
-        for (let obj in refArray) {
+        for (let object in refArray) {
 
-            let variable = refArray[obj].variable
-            let reference = refArray[obj].ref
+            let variable = refArray[object].variable
+            let reference = refArray[object].ref
 
-            if (obj == 2) {
+            if (object == 2) {
                 let hr = document.createElement("hr");
                 itemInfo.appendChild(hr)
             };
 
             variable = document.createElement("div");
-            variable.classList.add(refArray[obj].variable);
-            variable.id = reference;
+            variable.classList.add("itemData");
+            variable.id = refArray[object].variable
+            variable.innerText = reference;
             itemInfo.appendChild(variable);
 
         };
     };
 });
+
+//Show/Hide info
+const descriptions = document.getElementById("descriptions")
+
+function showInfo(event) {
+    const itemId = event.target.id
+    const itemInfoId = `${itemId}_Info`
+    const itemInfo = document.getElementById(itemInfoId)
+    let clone = itemInfo.cloneNode(true);
+
+    clone.id = itemId + "_clone";
+    descriptions.style = "display: block"
+    clone.style = "display: block"
+
+    descriptions.appendChild(clone)
+
+}
+
+function hideInfo(event) {
+    const itemId = event.target.id
+    const itemInfoId = `${itemId}_Info`
+    const itemInfo = document.getElementById(itemInfoId)
+    let clone = document.getElementById(itemId + "_clone")
+
+    descriptions.style = "display: none"
+    clone.style = "display: none"
+
+    clone.remove();
+
+}
 
 
 //Filter function
@@ -66,7 +96,7 @@ function filter() {
     element.scrollTo(0, 0);
 
     //Declare variables
-    let input, filter, items, itemInfo, itemDiv, j, k, span, txtValue;
+    let input, filter, items, itemInfo, itemDiv, j, k, itemClass, txtValue;
     input = document.getElementById("searchBar");
     filter = input.value.toUpperCase();
     items = document.getElementById("items");
@@ -77,8 +107,8 @@ function filter() {
     for (j = 0; j < itemInfo.length; j++) {
 
         for (k = 0; k < 3; k++) {
-            span = itemInfo[j].getElementsByTagName("span")[k];
-            txtValue = span.textContent || span.innerText;
+            itemClass = itemInfo[j].getElementsByClassName("itemData")[k];
+            txtValue = itemClass.textContent || itemClass.innerText;
             if (txtValue.toUpperCase().indexOf(filter) > -1) {
                 itemDiv[j].style.display = "";
                 break
