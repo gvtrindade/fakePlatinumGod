@@ -4,6 +4,7 @@
         height: 270px;
         margin: 0;
         padding: 0;
+        overflow: hidden;
     }
     
     #BG {
@@ -112,28 +113,37 @@
         cursor: pointer;
     }
     
+    .itemInfo {
+        text-align: center;
+        font-family: "Open Sans", sans-serif;
+        margin: 1%;
+    }
+    
     #descriptions {
         position: absolute;
-        bottom: 0;
+        top: 130px;
+        left: 3%;
         background-color: #555;
         color: #fff;
-        margin: 3%;
+        margin: 0;
         padding: 5px 2%;
         border-radius: 6px;
         width: 90%;
-        height: 40%;
+        height: auto;
     }
     
     #itemName {
-        font-size: 20px;
+        font-size: 21px;
     }
     
     #itemSubname {
         font-size: 14px;
+        font-weight: 100;
     }
     
     #itemDescription {
-        font-size: 16px;
+        font-size: 14px;
+        text-align: left;
     }
     
     .arrowButton {

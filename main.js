@@ -2,6 +2,7 @@ const { app, BrowserWindow } = require('electron');
 const path = require('path')
 const contextMenu = require('electron-context-menu');
 
+
 function createWindow() {
     // Create the browser window.
     win = new BrowserWindow({
