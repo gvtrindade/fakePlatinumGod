@@ -58,6 +58,14 @@ d3.csv("../assets/items.csv").then(function(data) {
     };
 });
 
+//Select input on app focus
+const input = document.getElementById("searchBar");
+
+function selectSearchBar() {
+    input.select();
+}
+
+
 //Show/Hide info
 const descriptions = document.getElementById("descriptions")
 

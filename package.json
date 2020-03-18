@@ -6,8 +6,9 @@
     "scripts": {
         "start": "electron .",
         "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/icon.icns --prune=true --out=release-builds",
-        "package-win": "electron-packager . electron --overwrite --asar --platform=win32 --arch=ia32 --icon=assets/icons/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"fakePlatinumGod\"",
-        "package-linux": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/icon.png --prune=true --out=release-builds"
+        "package-win": "electron-packager . D:/Documentos/Stuff/fakeplatinumgod/release-build fakePlatinumgod  --asar --platform=win32 --arch=ia32 --icon=assets/icons/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"fakePlatinumGod\"",
+        "package-linux": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/icon.png --prune=true --out=release-builds",
+        "dist": "electron-builder"
     },
     "repository": {
         "type": "git",
@@ -21,12 +22,20 @@
     },
     "homepage": "https://github.com/gvtrindade/fakeplatinumgod#readme",
     "devDependencies": {
-        "electron-packager": "^14.2.1"
+        "electron": "^8.1.1",
+        "electron-builder": "^22.4.1"
     },
     "dependencies": {
         "d3": "^5.15.0",
-        "electron": "^8.1.1",
-        "electron-context-menu": "^0.16.0",
-        "electron-reload": "^1.5.0"
+        "electron-context-menu": "^0.16.0"
+    },
+    "build": {
+        "appId": "fakePlatinumGod",
+        "win": {
+            "icon": "./assets/icons/icon.ico"
+        },
+        "directories": {
+            "output": "release-builds/v0.8/win"
+        }
     }
 }

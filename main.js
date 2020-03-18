@@ -2,12 +2,6 @@ const { app, BrowserWindow } = require('electron');
 const path = require('path')
 const contextMenu = require('electron-context-menu');
 
-// Enable live reload for Electron too
-require('electron-reload')(__dirname, {
-    // Note that the path to electron may vary according to the main file
-    electron: require(`${__dirname}/node_modules/electron`)
-});
-
 function createWindow() {
     // Create the browser window.
     win = new BrowserWindow({
@@ -18,7 +12,9 @@ function createWindow() {
         webPreferences: {
             nodeIntegration: true
         },
-        transparent: true
+        transparent: true,
+        resizable: false,
+        icon: __dirname + "/assets/icons/icon.png"
     })
 
     // and load the index.html of the app.
@@ -70,7 +66,8 @@ app.on("ready", function() {
                         webPreferences: {
                             nodeIntegration: true
                         },
-                        transparent: true
+                        transparent: true,
+                        icon: __dirname + "/assets/icons/icon.png"
                     })
 
                     win.on('close', function() { win = null })
