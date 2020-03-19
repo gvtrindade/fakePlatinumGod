@@ -49,7 +49,7 @@
     }
     
     #minimizeButton {
-        left: 384px;
+        right: 30px;
     }
     
     #minimizeButton:hover {
@@ -57,7 +57,7 @@
     }
     
     #closeButton {
-        left: 415px;
+        right: 0;
     }
     
     #closeButton:hover {
@@ -88,7 +88,21 @@
         filter: blur(0);
     }
     
-    .itemDiv {
+    .trinkets {
+        /*Div that has all the items*/
+        box-sizing: border-box;
+        white-space: nowrap;
+    }
+    
+    .trinkets:hover .Image {
+        filter: blur(5px);
+    }
+    
+    .trinkets .Image:hover {
+        filter: blur(0);
+    }
+    
+    .Div {
         /*Div that has individual items*/
         display: inline-block;
         user-select: none;
@@ -98,7 +112,7 @@
         justify-content: center;
     }
     
-    .itemImage {
+    .Image {
         /*Image of the item*/
         user-select: none;
         -moz-user-select: none;
@@ -109,11 +123,11 @@
         height: 96px;
     }
     
-    .itemImage:hover {
+    .Image:hover {
         cursor: pointer;
     }
     
-    .itemInfo {
+    .Info {
         text-align: center;
         font-family: "Open Sans", sans-serif;
         margin: 1%;
@@ -132,16 +146,16 @@
         height: auto;
     }
     
-    #itemName {
+    #Name {
         font-size: 21px;
     }
     
-    #itemSubname {
+    #Subname {
         font-size: 14px;
         font-weight: 100;
     }
     
-    #itemDescription {
+    #Description {
         font-size: 14px;
         text-align: left;
     }

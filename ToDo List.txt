@@ -1,5 +1,0 @@
-- Add items from repetance
-- Add trinkets
-- Search by transformation
-- Keyboard controls
-- Select searchbar on focus

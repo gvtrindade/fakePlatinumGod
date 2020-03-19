@@ -8,13 +8,15 @@ function createWindow() {
     win = new BrowserWindow({
         width: 446, //446
         height: 270, //125
-        alwaysOnTop: true,
-        frame: false,
+        // alwaysOnTop: true,
+        // frame: false,
+        // transparent: true,
+        // resizable: false,
+        // maximizable: false,
+        // fullscreenable: false,
         webPreferences: {
             nodeIntegration: true
         },
-        transparent: true,
-        resizable: false,
         icon: __dirname + "/assets/icons/icon.png"
     })
 
@@ -22,7 +24,7 @@ function createWindow() {
     win.loadFile('src/index.html')
 
     // Open the DevTools.
-    // win.webContents.openDevTools()
+    win.webContents.openDevTools()
 
     //Remove menu bar 
     win.removeMenu();

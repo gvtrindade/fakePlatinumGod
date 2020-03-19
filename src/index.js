@@ -1,61 +1,68 @@
 const d3 = require("d3");
 const shell = require("electron").shell;
 const items = document.getElementById("items");
+const trinkets = document.getElementById("trinkets")
 const remote = require("electron").remote
 
 
 //Sort lines in items.csv and creates one element for each item
-d3.csv("../assets/items.csv").then(function(data) {
+d3.csv("../assets/items.tsv").then(function(data) {
 
-    for (let i = 0; i < data.length; i++) {
+    console.log(data[3].Link)
 
-        //Creates individual div for the item
-        let itemDiv = document.createElement("div");
-        itemDiv.id = data[i].ID;
-        itemDiv.classList.add("itemDiv")
-        items.appendChild(itemDiv);
+    //     for (let i = 0; i < data.length; i++) {
 
-        //Creates image for the item, with id and click event to open link on browser
-        let itemImage = document.createElement("img")
-        itemImage.src = data[i].Image
-        itemImage.classList.add("itemImage")
-        itemImage.id = data[i].ID
-        itemImage.addEventListener("click", function() {
-            shell.openExternal(data[i].Link)
-        })
-        itemImage.onmouseover = showInfo;
-        itemImage.onmouseout = hideInfo;
-        itemDiv.appendChild(itemImage);
+    //         let category
 
-        //Creates div with the information about the item
-        let itemInfo = document.createElement("div");
-        itemInfo.classList.add("itemInfo");
-        itemInfo.id = data[i].ID + "_Info"
-        itemInfo.style = "display: none"
-        itemDiv.appendChild(itemInfo);
-        let nameObj = { variable: "itemName", ref: data[i].Name };
-        let subnameObj = { variable: "itemSubname", ref: data[i].Subname };
-        let descObj = { variable: "itemDescription", ref: data[i].Description };
-        let refArray = [nameObj, subnameObj, descObj];
+    //         if (data[i].Category == "I") { category = items } else { category = trinkets }
 
-        for (let object in refArray) {
+    //         //Creates individual div for the item
+    //         let Div = document.createElement("div");
+    //         Div.id = data[i].ID;
+    //         Div.classList.add("Div")
+    //         category.appendChild(Div);
 
-            let variable = refArray[object].variable
-            let reference = refArray[object].ref
+    //         //Creates image for the item, with id and click event to open link on browser
+    //         let Image = document.createElement("img")
+    //         Image.src = data[i].Image
+    //         Image.classList.add("Image")
+    //         Image.id = data[i].ID
+    //         Image.addEventListener("click", function() {
+    //             shell.openExternal(data[i].Link)
+    //         })
+    //         Image.onmouseover = showInfo;
+    //         Image.onmouseout = hideInfo;
+    //         Div.appendChild(Image);
 
-            if (object == 2) {
-                let hr = document.createElement("hr");
-                itemInfo.appendChild(hr)
-            };
+    //         //Creates div with the information about the item
+    //         let Info = document.createElement("div");
+    //         Info.classList.add("Info");
+    //         Info.id = data[i].ID + "_Info"
+    //         Info.style = "display: none"
+    //         Div.appendChild(Info);
+    //         let nameObj = { variable: "Name", ref: data[i].Name };
+    //         let subnameObj = { variable: "Subname", ref: data[i].Subname };
+    //         let descObj = { variable: "Description", ref: data[i].Description };
+    //         let refArray = [nameObj, subnameObj, descObj];
 
-            variable = document.createElement("div");
-            variable.classList.add("itemData");
-            variable.id = refArray[object].variable
-            variable.innerText = reference;
-            itemInfo.appendChild(variable);
+    //         for (let object in refArray) {
 
-        };
-    };
+    //             let variable = refArray[object].variable
+    //             let reference = refArray[object].ref
+
+    //             if (object == 2) {
+    //                 let hr = document.createElement("hr");
+    //                 Info.appendChild(hr)
+    //             };
+
+    //             variable = document.createElement("div");
+    //             variable.classList.add("Data");
+    //             variable.id = refArray[object].variable
+    //             variable.innerText = reference;
+    //             Info.appendChild(variable);
+
+    //         };
+    //     };
 });
 
 //Select input on app focus
@@ -108,14 +115,14 @@ function filter() {
     input = document.getElementById("searchBar");
     filter = input.value.toUpperCase();
     items = document.getElementById("items");
-    itemInfo = items.getElementsByClassName("itemInfo")
-    itemDiv = document.getElementsByClassName("itemDiv")
+    itemInfo = items.getElementsByClassName("Info")
+    itemDiv = document.getElementsByClassName("Div")
 
     //Loop through all items and hide those who don't match the search
     for (j = 0; j < itemInfo.length; j++) {
 
         for (k = 0; k < 3; k++) {
-            itemClass = itemInfo[j].getElementsByClassName("itemData")[k];
+            itemClass = itemInfo[j].getElementsByClassName("Data")[k];
             txtValue = itemClass.textContent || itemClass.innerText;
             if (txtValue.toUpperCase().indexOf(filter) > -1) {
                 itemDiv[j].style.display = "";
