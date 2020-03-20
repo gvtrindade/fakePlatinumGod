@@ -1,7 +1,0 @@
-directories:
-  output: release-builds
-  buildResources: build
-appId: fakePlatinumGod
-win:
-  icon: ./assets/icons/icon.ico
-electronVersion: 8.1.1

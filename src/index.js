@@ -6,63 +6,63 @@ const remote = require("electron").remote
 
 
 //Sort lines in items.csv and creates one element for each item
-d3.csv("../assets/items.tsv").then(function(data) {
+d3.tsv("../assets/items.tsv").then(function(data) {
 
-    console.log(data[3].Link)
 
-    //     for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i++) {
 
-    //         let category
+        const element = data[i]
+        let category
 
-    //         if (data[i].Category == "I") { category = items } else { category = trinkets }
+        if (element.Category == "I") { category = items } else { category = trinkets }
 
-    //         //Creates individual div for the item
-    //         let Div = document.createElement("div");
-    //         Div.id = data[i].ID;
-    //         Div.classList.add("Div")
-    //         category.appendChild(Div);
+        //Creates individual div for the item
+        let Div = document.createElement("div");
+        Div.classList.add("Div")
+        Div.id = element.ID + "_" + element.Category + "_Div";
+        category.appendChild(Div);
 
-    //         //Creates image for the item, with id and click event to open link on browser
-    //         let Image = document.createElement("img")
-    //         Image.src = data[i].Image
-    //         Image.classList.add("Image")
-    //         Image.id = data[i].ID
-    //         Image.addEventListener("click", function() {
-    //             shell.openExternal(data[i].Link)
-    //         })
-    //         Image.onmouseover = showInfo;
-    //         Image.onmouseout = hideInfo;
-    //         Div.appendChild(Image);
+        //Creates image for the item, with id and click event to open link on browser
+        let Image = document.createElement("img")
+        Image.src = element.Image
+        Image.classList.add("Image")
+        Image.id = element.ID + element.Category;
+        Image.addEventListener("click", function() {
+            shell.openExternal(element.Link)
+        })
+        Image.onmouseover = showInfo;
+        Image.onmouseout = hideInfo;
+        Div.appendChild(Image);
 
-    //         //Creates div with the information about the item
-    //         let Info = document.createElement("div");
-    //         Info.classList.add("Info");
-    //         Info.id = data[i].ID + "_Info"
-    //         Info.style = "display: none"
-    //         Div.appendChild(Info);
-    //         let nameObj = { variable: "Name", ref: data[i].Name };
-    //         let subnameObj = { variable: "Subname", ref: data[i].Subname };
-    //         let descObj = { variable: "Description", ref: data[i].Description };
-    //         let refArray = [nameObj, subnameObj, descObj];
+        //Creates div with the information about the item
+        let Info = document.createElement("div");
+        Info.classList.add("Info");
+        Info.id = element.ID + element.Category + "_Info"
+        Info.style = "display: none"
+        Div.appendChild(Info);
+        let nameObj = { variable: "Name", ref: element.Name };
+        let subnameObj = { variable: "Subname", ref: element.Subname };
+        let descObj = { variable: "Description", ref: element.Description };
+        let refArray = [nameObj, subnameObj, descObj];
 
-    //         for (let object in refArray) {
+        for (let object in refArray) {
 
-    //             let variable = refArray[object].variable
-    //             let reference = refArray[object].ref
+            let variable = refArray[object].variable
+            let reference = refArray[object].ref
 
-    //             if (object == 2) {
-    //                 let hr = document.createElement("hr");
-    //                 Info.appendChild(hr)
-    //             };
+            if (object == 2) {
+                let hr = document.createElement("hr");
+                Info.appendChild(hr)
+            };
 
-    //             variable = document.createElement("div");
-    //             variable.classList.add("Data");
-    //             variable.id = refArray[object].variable
-    //             variable.innerText = reference;
-    //             Info.appendChild(variable);
+            variable = document.createElement("div");
+            variable.classList.add("Data");
+            variable.id = refArray[object].variable
+            variable.innerText = reference;
+            Info.appendChild(variable);
 
-    //         };
-    //     };
+        };
+    };
 });
 
 //Select input on app focus
@@ -73,16 +73,17 @@ function selectSearchBar() {
 }
 
 
-//Show/Hide info
+// //Show/Hide info
 const descriptions = document.getElementById("descriptions")
 
 function showInfo(event) {
-    const itemId = event.target.id
-    const itemInfoId = `${itemId}_Info`
-    const itemInfo = document.getElementById(itemInfoId)
-    let clone = itemInfo.cloneNode(true);
+    // debugger
+    const Id = event.target.id
+    const InfoId = `${Id}_Info`
+    const Info = document.getElementById(InfoId)
+    let clone = Info.cloneNode(true);
 
-    clone.id = itemId + "_clone";
+    clone.id = Id + "_clone";
     descriptions.style = "display: block"
     clone.style = "display: block"
 
@@ -91,10 +92,10 @@ function showInfo(event) {
 }
 
 function hideInfo(event) {
-    const itemId = event.target.id
-    const itemInfoId = `${itemId}_Info`
-    const itemInfo = document.getElementById(itemInfoId)
-    let clone = document.getElementById(itemId + "_clone")
+    const Id = event.target.id
+    const InfoId = `${Id}_Info`
+    const Info = document.getElementById(InfoId)
+    let clone = document.getElementById(Id + "_clone")
 
     descriptions.style = "display: none"
     clone.style = "display: none"
@@ -111,24 +112,24 @@ function filter() {
     element.scrollTo(0, 0);
 
     //Declare variables
-    let input, filter, items, itemInfo, itemDiv, j, k, itemClass, txtValue;
+    let input, filter, content, Info, Div, j, k, Class, txtValue;
     input = document.getElementById("searchBar");
     filter = input.value.toUpperCase();
-    items = document.getElementById("items");
-    itemInfo = items.getElementsByClassName("Info")
-    itemDiv = document.getElementsByClassName("Div")
+    content = document.getElementById("content");
+    Info = content.getElementsByClassName("Info")
+    Div = document.getElementsByClassName("Div")
 
     //Loop through all items and hide those who don't match the search
-    for (j = 0; j < itemInfo.length; j++) {
+    for (j = 0; j < Info.length; j++) {
 
         for (k = 0; k < 3; k++) {
-            itemClass = itemInfo[j].getElementsByClassName("Data")[k];
-            txtValue = itemClass.textContent || itemClass.innerText;
+            Class = Info[j].getElementsByClassName("Data")[k];
+            txtValue = Class.textContent || Class.innerText;
             if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                itemDiv[j].style.display = "";
+                Div[j].style.display = "";
                 break
             } else {
-                itemDiv[j].style.display = "none";
+                Div[j].style.display = "none";
             };
         }
     };
@@ -147,13 +148,50 @@ function minimize() {
     window.minimize();
 }
 
+//Show/hide items and trinkets
+let itemActivated = true;
+let trinketActivated = true;
+
+function showItemsTrinkets(element) {
+    const itemsButton = document.getElementById("itemsButton")
+    const trinketsButton = document.getElementById("trinketsButton")
+    const items = document.getElementById("items")
+    const trinkets = document.getElementById("trinkets")
+
+    if (element.id == "itemsButton") {
+        if (itemActivated == true && trinketActivated == true) {
+            itemsButton.style = "background-color: #929292"
+            items.style = "display: none"
+            itemActivated = false
+        } else {
+            itemsButton.style = "background-color: blue"
+            items.style = "display: block"
+            itemActivated = true
+            content.scrollTo(0, 0);
+        }
+    } else {
+        if (trinketActivated == true && itemActivated == true) {
+            trinketsButton.style = "background-color: #929292"
+            trinkets.style = "display: none"
+            trinketActivated = false
+        } else {
+            trinketsButton.style = "background-color: green"
+            trinkets.style = "display: block"
+            trinketActivated = true
+            content.scrollTo(0, 0);
+        }
+    }
+
+}
+
+
 //Roll window by clicking buttons
 const element = document.getElementById("content")
 
 function scrollToRight() {
-    element.scrollBy({ left: 288, behavior: "smooth" });
+    element.scrollBy({ left: (element.clientWidth * 0.75), behavior: "smooth" });
 }
 
 function scrollToLeft() {
-    element.scrollBy({ left: -288, behavior: "smooth" });
+    element.scrollBy({ left: -(element.clientWidth * 0.75), behavior: "smooth" });
 }

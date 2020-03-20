@@ -22,27 +22,31 @@
             <img src="../assets/images/close.png" style="height: 10px;">
         </div>
 
+        <div id="itemsButton" class="frameButton" onclick="showItemsTrinkets(this)">Items</div>
+
+        <div id="trinketsButton" class="frameButton" onclick="showItemsTrinkets(this)">Trinkets</div>
+
     </div>
 
-    <div id="content">
+    <div id="content" class="content">
         <div class="items" id="items"></div>
         <div class="trinkets" id="trinkets"></div>
     </div>
 
-    <div id=" descriptions " style="display: none; "></div>
+    <div id="descriptions" style="display: none;"></div>
 
-    <div class="arrowButton " id="rightDiv " onclick="scrollToRight() ">
-        <img src="../assets/images/arrow.png " id="rightButton ">
+    <div class="arrowButton" id="rightDiv" onclick="scrollToRight()">
+        <img src="../assets/images/arrow.png" id="rightButton">
     </div>
-    <div class="arrowButton " id="leftDiv " onclick="scrollToLeft() ">
-        <img src="../assets/images/arrow.png " id="leftButton ">
+    <div class="arrowButton" id="leftDiv" onclick="scrollToLeft()">
+        <img src="../assets/images/arrow.png" id="leftButton">
     </div>
 
-    <div id="BG "></div>
+    <div id="background"></div>
 
     <!--<p>Welcome to fakeplatinumgod!</p>-->
 
-    <script src="index.js "></script>
+    <script src="index.js"></script>
 </body>
 
 </html>

@@ -2,18 +2,24 @@ const { app, BrowserWindow } = require('electron');
 const path = require('path')
 const contextMenu = require('electron-context-menu');
 
+// Enable live reload for Electron too
+require('electron-reload')(__dirname, {
+    // Note that the path to electron may vary according to the main file
+    electron: require(`${__dirname}/node_modules/electron`)
+});
+
 
 function createWindow() {
     // Create the browser window.
     win = new BrowserWindow({
         width: 446, //446
-        height: 270, //125
-        // alwaysOnTop: true,
-        // frame: false,
-        // transparent: true,
-        // resizable: false,
-        // maximizable: false,
-        // fullscreenable: false,
+        height: 287, //125
+        alwaysOnTop: true,
+        frame: false,
+        transparent: true,
+        resizable: false,
+        maximizable: false,
+        fullscreenable: false,
         webPreferences: {
             nodeIntegration: true
         },
@@ -24,7 +30,7 @@ function createWindow() {
     win.loadFile('src/index.html')
 
     // Open the DevTools.
-    win.webContents.openDevTools()
+    // win.webContents.openDevTools()
 
     //Remove menu bar 
     win.removeMenu();
