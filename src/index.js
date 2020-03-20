@@ -25,6 +25,7 @@ d3.tsv("../assets/items.tsv").then(function(data) {
         //Creates image for the item, with id and click event to open link on browser
         let Image = document.createElement("img")
         Image.src = element.Image
+        Image.tabIndex = "0"
         Image.classList.add("Image")
         Image.id = element.ID + element.Category;
         Image.addEventListener("click", function() {
@@ -77,7 +78,6 @@ function selectSearchBar() {
 const descriptions = document.getElementById("descriptions")
 
 function showInfo(event) {
-    // debugger
     const Id = event.target.id
     const InfoId = `${Id}_Info`
     const Info = document.getElementById(InfoId)

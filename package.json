@@ -1,6 +1,6 @@
 {
     "name": "fakeplatinumgod",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "description": "A widget to search The Binding of Isaac items",
     "main": "main.js",
     "scripts": {
@@ -20,8 +20,7 @@
     "homepage": "https://github.com/gvtrindade/fakeplatinumgod",
     "devDependencies": {
         "electron": "^8.1.1",
-        "electron-builder": "^22.4.1",
-        "electron-reload": "^1.5.0"
+        "electron-builder": "^22.4.1"
     },
     "dependencies": {
         "d3": "^5.15.0",
@@ -34,7 +33,7 @@
             "icon": "./assets/icons/icon.ico"
         },
         "directories": {
-            "output": "release-builds/v0.8/win"
+            "output": "release-builds/"
         }
     }
 }
