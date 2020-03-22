@@ -159,6 +159,10 @@
         filter: blur(0);
     }
     
+    .Image:focus {
+        background-color: rgba(117, 91, 91, 0.8);
+    }
+    
     .trinkets {
         /*Div that has all the items*/
         white-space: nowrap;

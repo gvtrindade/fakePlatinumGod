@@ -1,6 +1,6 @@
 {
     "name": "fakeplatinumgod",
-    "version": "0.0.9",
+    "version": "0.9.5",
     "description": "A widget to search The Binding of Isaac items",
     "main": "main.js",
     "scripts": {

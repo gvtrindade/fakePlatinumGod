@@ -33,6 +33,8 @@ d3.tsv("../assets/items.tsv").then(function(data) {
         })
         Image.onmouseover = showInfo;
         Image.onmouseout = hideInfo;
+        Image.onfocus = showInfo;
+        Image.onblur = hideInfo;
         Div.appendChild(Image);
 
         //Creates div with the information about the item
@@ -195,3 +197,9 @@ function scrollToRight() {
 function scrollToLeft() {
     element.scrollBy({ left: -(element.clientWidth * 0.75), behavior: "smooth" });
 }
+
+//Keyboard controls
+
+document.addEventListener("keydown", function(event) {
+    if (`${event.code}` == "Escape") { input.select() }
+})
