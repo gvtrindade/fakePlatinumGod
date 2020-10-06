@@ -19,7 +19,7 @@
     },
     "homepage": "https://github.com/gvtrindade/fakeplatinumgod",
     "devDependencies": {
-        "electron": "^8.1.1",
+        "electron": "^8.5.1",
         "electron-builder": "^22.4.1"
     },
     "dependencies": {
